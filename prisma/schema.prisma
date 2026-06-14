@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  phone         String    @unique
+  name          String
+  password      String
+  wechatQrCode  String    // 微信二维码图片URL
+  wechatId      String?   // 微信号
+  emailContact  String?   // 联系邮箱
+  isApproved    Boolean   @default(false)
+  isAdmin       Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  newsPosts     News[]
+  shares        Share[]
+
+  @@map("users")
+}
+
+model News {
+  id            String    @id @default(cuid())
+  title         String
+  summary       String    @db.Text
+  content       String    @db.Text
+  category      String
+  source        String
+  sourceUrl     String?
+  imageUrl      String?
+  tags          String[]
+
+  status        NewsStatus @default(PENDING)
+  submittedBy   String
+  submitter     User      @relation(fields: [submittedBy], references: [id])
+  submittedAt   DateTime  @default(now())
+  reviewedBy    String?
+  reviewedAt    DateTime?
+  reviewNote    String?
+
+  scheduledAt   DateTime?
+  publishedAt   DateTime?
+
+  viewCount     Int       @default(0)
+  shareCount    Int       @default(0)
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  shares        Share[]
+
+  @@map("news")
+}
+
+enum NewsStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SCHEDULED
+  PUBLISHED
+}
+
+model Share {
+  id            String    @id @default(cuid())
+  newsId        String
+  news          News      @relation(fields: [newsId], references: [id])
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+
+  shareType     String
+  shareUrl      String
+
+  createdAt     DateTime  @default(now())
+
+  @@map("shares")
+}
+
+model Notification {
+  id            String    @id @default(cuid())
+  userId        String
+  type          String
+  title         String
+  content       String
+  newsId        String?
+  isRead        Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+
+  @@map("notifications")
+}
