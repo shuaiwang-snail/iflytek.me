@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Theme Test</title>
+  <script>
+    // 模拟 next-themes 的行为
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        // system
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+      localStorage.setItem('theme', theme);
+    }
+    
+    // 页面加载时读取主题
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    setTheme(savedTheme);
+  </script>
+  <style>
+    :root { --bg: #ffffff; --fg: #171717; }
+    .dark { --bg: #0a0a0a; --fg: #ededed; }
+    body { background: var(--bg); color: var(--fg); padding: 20px; font-family: sans-serif; }
+    button { margin: 5px; padding: 10px 20px; cursor: pointer; }
+    .active { background: #3b82f6; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Theme Test</h1>
+  <p>Current theme: <span id="current">system</span></p>
+  <button onclick="setTheme('dark'); updateUI('dark')">🌙 Dark</button>
+  <button onclick="setTheme('system'); updateUI('system')">💻 System</button>
+  <button onclick="setTheme('light'); updateUI('light')">☀️ Light</button>
+  
+  <script>
+    function updateUI(theme) {
+      document.getElementById('current').textContent = theme;
+      document.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+    
+    // 初始化按钮状态
+    const current = localStorage.getItem('theme') || 'system';
+    document.getElementById('current').textContent = current;
+  </script>
+</body>
+</html>

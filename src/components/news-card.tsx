@@ -84,14 +84,14 @@ export function NewsCard({ news }: NewsCardProps) {
           </div>
 
           {/* 标签 */}
-          {news.tags.length > 0 && (
+          {news.tags && (
             <div className="flex flex-wrap gap-2 mt-3">
-              {news.tags.map((tag) => (
+              {news.tags.split(',').filter(t => t.trim()).map((tag) => (
                 <span
                   key={tag}
                   className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs"
                 >
-                  #{tag}
+                  #{tag.trim()}
                 </span>
               ))}
             </div>

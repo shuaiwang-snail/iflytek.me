@@ -1,8 +1,9 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// SQLite 开发版本 Schema
+// 用于本地快速测试
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/sqlite-client"
 }
 
 datasource db {
@@ -16,9 +17,9 @@ model User {
   phone         String    @unique
   name          String
   password      String
-  wechatQrCode  String    // 微信二维码图片URL
-  wechatId      String?   // 微信号
-  emailContact  String?   // 联系邮箱
+  wechatQrCode  String
+  wechatId      String?
+  emailContact  String?
   isApproved    Boolean   @default(false)
   isAdmin       Boolean   @default(false)
   createdAt     DateTime  @default(now())
@@ -41,7 +42,7 @@ model News {
   imageUrl      String?
   tags          String    @default("")
 
-  status        String     @default("PENDING")
+  status        String    @default("PENDING")
   submittedBy   String
   submitter     User      @relation(fields: [submittedBy], references: [id])
   submittedAt   DateTime  @default(now())
