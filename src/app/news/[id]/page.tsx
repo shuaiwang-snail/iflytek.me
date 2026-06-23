@@ -153,7 +153,7 @@ export default function NewsDetailPage() {
                 <span className="px-2 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded">
                   {categoryLabels[news.category] || news.category}
                 </span>
-                {typeof news.tags === 'string' && news.tags.split(',').filter(Boolean).map((tag) => (
+                {typeof news.tags === 'string' && (news.tags as string).split(',').filter(Boolean).map((tag) => (
                   <span
                     key={tag}
                     className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded"

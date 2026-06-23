@@ -243,7 +243,7 @@ export default function Home() {
                               <span className="text-xs text-gray-500 dark:text-gray-400">
                                 {categoryLabels[item.category] || item.category}
                               </span>
-                              {item.tags && typeof item.tags === 'string' && item.tags.split(',').filter(Boolean).map((tag) => (
+                              {item.tags && typeof item.tags === 'string' && (item.tags as string).split(',').filter(Boolean).map((tag) => (
                                 <span key={tag} className="text-xs text-gray-500 dark:text-gray-400">
                                   {tag.trim()}
                                 </span>
