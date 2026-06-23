@@ -180,7 +180,7 @@ const educationProducts = [
       battery: "1500mAh",
       recognition: "OCR多行扫描"
     },
-    price: "¥1,999",
+    price: "¥1,399",
     tag: "大屏旗舰",
     sortOrder: 4
   },
@@ -206,7 +206,7 @@ const educationProducts = [
       battery: "1200mAh",
       recognition: "OCR多行扫描"
     },
-    price: "¥1,699",
+    price: "¥1,049",
     tag: "专业版",
     sortOrder: 3
   },
@@ -232,7 +232,7 @@ const educationProducts = [
       battery: "1000mAh",
       recognition: "OCR文字识别"
     },
-    price: "¥1,299",
+    price: "¥899",
     tag: "热销单品",
     sortOrder: 2
   },
@@ -257,7 +257,7 @@ const educationProducts = [
       battery: "1000mAh",
       recognition: "OCR文字识别"
     },
-    price: "¥999",
+    price: "¥599",
     tag: "入门首选",
     sortOrder: 1
   }
