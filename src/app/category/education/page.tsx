@@ -2,12 +2,14 @@
 
 import { Sidebar } from "@/components/sidebar";
 
-// 教育产品数据
+// 教育产品数据 - 按型号从高到低排序
 const educationProducts = [
+  // 学习机 T90 系列（最高端）
   {
-    id: "xuexiji-t30",
-    name: "讯飞AI学习机 T30 Ultra",
-    model: "T30 Ultra",
+    id: "xuexiji-t90-pro",
+    name: "讯飞AI学习机 T90 Pro",
+    model: "T90 Pro",
+    series: "T90系列",
     subtitle: "旗舰顶配，AI精准学",
     description: "14.7英寸类自然光护眼屏，星火大模型加持，全科AI精准学，适合小学到高中全学段。",
     features: [
@@ -15,24 +17,99 @@ const educationProducts = [
       "星火大模型AI 1对1辅导",
       "全科AI精准学",
       "12000mAh超大电池",
-      "12GB+512GB超大存储"
+      "16GB+1TB超大存储"
     ],
     specs: {
       screen: "14.7英寸 3K类纸屏",
-      storage: "12GB+512GB",
+      storage: "16GB+1TB",
       battery: "12000mAh",
-      system: "AI学习系统 4.0"
+      system: "AI学习系统 5.0"
     },
-    price: "¥11,999",
+    price: "¥12,999",
     tag: "旗舰顶配",
-    sortOrder: 5
+    sortOrder: 10
   },
   {
-    id: "xuexiji-t20",
-    name: "讯飞AI学习机 T20 Pro",
-    model: "T20 Pro",
+    id: "xuexiji-t90-lite",
+    name: "讯飞AI学习机 T90 Lite",
+    model: "T90 Lite",
+    series: "T90系列",
     subtitle: "高端旗舰，精准提升",
-    description: "13.3英寸护眼大屏，AI同步精准学，中高考同源评测技术，让学习更高效。",
+    description: "14.7英寸护眼大屏，AI同步精准学，中高考同源评测技术，让学习更高效。",
+    features: [
+      "14.7英寸2K类纸护眼屏",
+      "AI同步精准学",
+      "中高考同源口语评测",
+      "AI作文批改辅导",
+      "12000mAh大电池"
+    ],
+    specs: {
+      screen: "14.7英寸 2K类纸屏",
+      storage: "12GB+512GB",
+      battery: "12000mAh",
+      system: "AI学习系统 5.0"
+    },
+    price: "¥10,999",
+    tag: "高端旗舰",
+    sortOrder: 9
+  },
+  // 学习机 S90 系列
+  {
+    id: "xuexiji-s90-pro",
+    name: "讯飞AI学习机 S90 Pro",
+    model: "S90 Pro",
+    series: "S90系列",
+    subtitle: "性能旗舰，全面升级",
+    description: "13.3英寸护眼屏，AI精准学，适合小学到初中，性能全面升级。",
+    features: [
+      "13.3英寸类纸护眼屏",
+      "AI精准诊断",
+      "同步课程学习",
+      "家长智能管控",
+      "10000mAh大电池"
+    ],
+    specs: {
+      screen: "13.3英寸 2K类纸屏",
+      storage: "12GB+512GB",
+      battery: "10000mAh",
+      system: "AI学习系统 4.5"
+    },
+    price: "¥8,999",
+    tag: "性能旗舰",
+    sortOrder: 8
+  },
+  // 学习机 T30 系列
+  {
+    id: "xuexiji-t30-ultra",
+    name: "讯飞AI学习机 T30 Ultra",
+    model: "T30 Ultra",
+    series: "T30系列",
+    subtitle: "经典旗舰，AI精准学",
+    description: "13.3英寸护眼大屏，星火大模型加持，全科AI精准学，经典旗舰之选。",
+    features: [
+      "13.3英寸2K类纸护眼屏",
+      "星火大模型AI辅导",
+      "全科AI精准学",
+      "AI作业诊断",
+      "10000mAh大电池"
+    ],
+    specs: {
+      screen: "13.3英寸 2K类纸屏",
+      storage: "12GB+512GB",
+      battery: "10000mAh",
+      system: "AI学习系统 4.0"
+    },
+    price: "¥8,999",
+    tag: "经典旗舰",
+    sortOrder: 7
+  },
+  {
+    id: "xuexiji-t30-pro",
+    name: "讯飞AI学习机 T30 Pro",
+    model: "T30 Pro",
+    series: "T30系列",
+    subtitle: "高端之选，精准提升",
+    description: "13.3英寸护眼大屏，AI同步精准学，中高考同源评测技术。",
     features: [
       "13.3英寸2K类纸护眼屏",
       "AI同步精准学",
@@ -46,45 +123,73 @@ const educationProducts = [
       battery: "10000mAh",
       system: "AI学习系统 4.0"
     },
-    price: "¥8,999",
-    tag: "高端旗舰",
-    sortOrder: 4
+    price: "¥7,999",
+    tag: "高端之选",
+    sortOrder: 6
   },
   {
-    id: "xuexiji-s30",
-    name: "讯飞AI学习机 S30",
-    model: "S30",
+    id: "xuexiji-t30-lite",
+    name: "讯飞AI学习机 T30 Lite",
+    model: "T30 Lite",
+    series: "T30系列",
     subtitle: "性价比之选",
-    description: "11英寸护眼屏，AI精准学，适合小学到初中，性价比极高的学习伙伴。",
+    description: "13.3英寸护眼屏，AI精准学，适合小学到初中，高性价比。",
     features: [
-      "11英寸护眼屏",
+      "13.3英寸护眼屏",
       "AI精准诊断",
       "同步课程学习",
       "家长管控",
       "轻薄便携"
     ],
     specs: {
-      screen: "11英寸 FHD",
-      storage: "6GB+128GB",
-      battery: "7500mAh",
-      system: "AI学习系统 3.0"
+      screen: "13.3英寸 FHD",
+      storage: "8GB+256GB",
+      battery: "8000mAh",
+      system: "AI学习系统 4.0"
     },
-    price: "¥4,999",
+    price: "¥6,999",
     tag: "性价比",
-    sortOrder: 3
+    sortOrder: 5
   },
+  // AI词典笔 P30 系列
   {
-    id: "cidianbi-p20",
-    name: "讯飞AI词典笔 P20 Plus",
-    model: "P20 Plus",
+    id: "cidianbi-p30-pro",
+    name: "讯飞AI词典笔 P30 Pro",
+    model: "P30 Pro",
+    series: "P30系列",
     subtitle: "大屏旗舰，专业翻译",
-    description: "3.7英寸大屏，支持多行扫描，离线翻译，适合大学生及专业人士。",
+    description: "4.0英寸大屏，支持多行扫描，离线翻译，适合大学生及专业人士。",
     features: [
-      "3.7英寸高清大屏",
+      "4.0英寸高清大屏",
       "多行扫描翻译",
-      "500万+海量词库",
+      "600万+海量词库",
       "离线翻译",
       "语音翻译"
+    ],
+    specs: {
+      screen: "4.0英寸高清屏",
+      storage: "32GB",
+      battery: "1500mAh",
+      recognition: "OCR多行扫描"
+    },
+    price: "¥1,999",
+    tag: "大屏旗舰",
+    sortOrder: 4
+  },
+  // AI词典笔 X9 系列
+  {
+    id: "cidianbi-x9-pro",
+    name: "讯飞AI词典笔 X9 Pro",
+    model: "X9 Pro",
+    series: "X9系列",
+    subtitle: "专业版，全面升级",
+    description: "3.7英寸屏幕，0.5秒快速识别，500万+词库，专业版全面升级。",
+    features: [
+      "3.7英寸高清大屏",
+      "0.3秒极速识别",
+      "500万+海量词库",
+      "真人发音",
+      "离线使用"
     ],
     specs: {
       screen: "3.7英寸高清屏",
@@ -93,15 +198,41 @@ const educationProducts = [
       recognition: "OCR多行扫描"
     },
     price: "¥1,699",
-    tag: "大屏旗舰",
+    tag: "专业版",
+    sortOrder: 3
+  },
+  // AI词典笔 X8 系列
+  {
+    id: "cidianbi-x8-pro",
+    name: "讯飞AI词典笔 X8 Pro",
+    model: "X8 Pro",
+    series: "X8系列",
+    subtitle: "一扫即查，高效学习",
+    description: "3.5英寸屏幕，0.5秒快速识别，400万+词库，覆盖全学段英语学习需求。",
+    features: [
+      "3.5英寸高清屏",
+      "0.5秒快速识别",
+      "400万+海量词库",
+      "真人发音",
+      "离线使用"
+    ],
+    specs: {
+      screen: "3.5英寸高清屏",
+      storage: "16GB",
+      battery: "1000mAh",
+      recognition: "OCR文字识别"
+    },
+    price: "¥1,299",
+    tag: "热销单品",
     sortOrder: 2
   },
   {
-    id: "cidianbi-s10",
-    name: "讯飞扫描词典笔 S10",
-    model: "S10",
-    subtitle: "一扫即查，高效学习",
-    description: "3.2英寸屏幕，0.5秒快速识别，320万+词库，覆盖全学段英语学习需求。",
+    id: "cidianbi-x8",
+    name: "讯飞AI词典笔 X8",
+    model: "X8",
+    series: "X8系列",
+    subtitle: "入门首选，轻松学习",
+    description: "3.2英寸屏幕，0.5秒快速识别，320万+词库，入门首选。",
     features: [
       "3.2英寸高清屏",
       "0.5秒快速识别",
@@ -115,8 +246,8 @@ const educationProducts = [
       battery: "1000mAh",
       recognition: "OCR文字识别"
     },
-    price: "¥1,299",
-    tag: "热销单品",
+    price: "¥999",
+    tag: "入门首选",
     sortOrder: 1
   }
 ];
@@ -161,6 +292,13 @@ export default function EducationPage() {
 
                 {/* 产品内容 */}
                 <div className="p-5 flex-1 flex flex-col">
+                  {/* 系列标识 */}
+                  <div className="mb-2">
+                    <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+                      {product.series}
+                    </span>
+                  </div>
+
                   {/* 产品名称 */}
                   <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                     {product.name}
