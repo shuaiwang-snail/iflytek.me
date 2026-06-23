@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/wangshuai/.openclaw/workspace/iflytek-me/src/app/category/office/layout.tsx"],"sourcesContent":["import { Metadata } from \"next\";\n\nexport const metadata: Metadata = {\n  title: \"办公类产品 - 讯飞资讯\",\n  description: \"讯飞智能办公解决方案与产品动态\",\n};\n\nexport default function OfficeLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return children;\n}\n"],"names":["metadata","title","description","OfficeLayout","children"],"mappings":";;;;;;AAEO,MAAMA,WAAqB;IAChCC,OAAO;IACPC,aAAa;AACf;AAEe,SAASC,aAAa,EACnCC,QAAQ,EAGT;IACC,OAAOA;AACT"}}]
+}
