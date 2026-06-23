@@ -27,7 +27,7 @@ const officeProducts = [
       battery: "4200mAh",
       system: "智能办公系统"
     },
-    price: "¥5,999",
+    price: "¥6,599",
     tag: "Lamy联名",
     sortOrder: 10
   },
@@ -52,7 +52,7 @@ const officeProducts = [
       battery: "4200mAh",
       system: "智能办公系统"
     },
-    price: "¥4,999",
+    price: "¥5,699",
     tag: "专业办公",
     sortOrder: 9
   },
@@ -77,7 +77,7 @@ const officeProducts = [
       battery: "4200mAh",
       system: "智能办公系统"
     },
-    price: "¥3,999",
+    price: "¥4,999",
     tag: "经典之选",
     sortOrder: 8
   },
@@ -102,7 +102,7 @@ const officeProducts = [
       battery: "3200mAh",
       system: "智能办公系统"
     },
-    price: "¥3,499",
+    price: "¥3,599",
     tag: "轻薄旗舰",
     sortOrder: 7
   },
@@ -127,7 +127,7 @@ const officeProducts = [
       battery: "3200mAh",
       system: "智能办公系统"
     },
-    price: "¥2,799",
+    price: "¥2,999",
     tag: "轻薄入门",
     sortOrder: 6
   },
@@ -152,7 +152,7 @@ const officeProducts = [
       battery: "4600mAh",
       system: "智能办公系统"
     },
-    price: "¥4,299",
+    price: "¥4,899",
     tag: "键盘套装",
     sortOrder: 5
   },
@@ -177,7 +177,7 @@ const officeProducts = [
       battery: "4600mAh",
       system: "智能办公系统"
     },
-    price: "¥3,299",
+    price: "¥3,999",
     tag: "蝉翼墨水屏",
     sortOrder: 4
   },
@@ -202,7 +202,7 @@ const officeProducts = [
       battery: "4800mAh",
       system: "智能办公系统"
     },
-    price: "¥6,999",
+    price: "¥6,399",
     tag: "大屏旗舰",
     sortOrder: 3
   },
@@ -228,7 +228,7 @@ const officeProducts = [
       battery: "1500mAh",
       system: "阅读系统"
     },
-    price: "¥899",
+    price: "¥2,399",
     tag: "舒适阅读",
     sortOrder: 2
   },
@@ -253,7 +253,7 @@ const officeProducts = [
       battery: "1500mAh",
       system: "阅读系统"
     },
-    price: "¥699",
+    price: "¥1,599",
     tag: "网文追更",
     sortOrder: 1
   },
@@ -278,7 +278,7 @@ const officeProducts = [
       battery: "1500mAh",
       system: "青少年阅读系统"
     },
-    price: "¥999",
+    price: "¥2,299",
     tag: "青少年专属",
     sortOrder: 0
   },
@@ -303,7 +303,7 @@ const officeProducts = [
       battery: "1500mAh",
       system: "青少年阅读系统"
     },
-    price: "¥1,199",
+    price: "¥2,699",
     tag: "名师导读",
     sortOrder: -1
   },
@@ -329,7 +329,7 @@ const officeProducts = [
       battery: "2380mAh",
       system: "翻译系统 2.0"
     },
-    price: "¥4,999",
+    price: "¥6,499",
     tag: "双屏旗舰",
     sortOrder: -2
   },
@@ -379,7 +379,7 @@ const officeProducts = [
       battery: "2200mAh",
       system: "翻译系统 4.0"
     },
-    price: "¥3,299",
+    price: "¥3,999",
     tag: "星火版",
     sortOrder: -4
   },
@@ -404,7 +404,7 @@ const officeProducts = [
       battery: "耳机30h+",
       system: "翻译系统"
     },
-    price: "¥1,499",
+    price: "¥2,499",
     tag: "随身翻译",
     sortOrder: -5
   },
@@ -430,7 +430,7 @@ const officeProducts = [
       battery: "2000mAh",
       system: "AI录音系统"
     },
-    price: "¥2,999",
+    price: "¥6,999",
     tag: "离线转写",
     sortOrder: -6
   },
@@ -455,7 +455,7 @@ const officeProducts = [
       battery: "1500mAh",
       system: "AI录音系统"
     },
-    price: "¥1,999",
+    price: "¥3,999",
     tag: "专业录音",
     sortOrder: -7
   },
@@ -480,7 +480,7 @@ const officeProducts = [
       battery: "1500mAh",
       system: "AI录音系统"
     },
-    price: "¥1,299",
+    price: "¥2,999",
     tag: "智能录音",
     sortOrder: -8
   },
@@ -505,7 +505,7 @@ const officeProducts = [
       battery: "20h续航",
       system: "AI录音系统"
     },
-    price: "¥799",
+    price: "¥899",
     tag: "魔法录音",
     sortOrder: -9
   },
@@ -530,7 +530,7 @@ const officeProducts = [
       battery: "15h续航",
       system: "AI录音系统"
     },
-    price: "¥499",
+    price: "¥549",
     tag: "口袋录音",
     sortOrder: -10
   }
