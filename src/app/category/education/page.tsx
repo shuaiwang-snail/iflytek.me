@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Sidebar } from "@/components/sidebar";
 
 // 教育产品数据 - 按型号从高到低排序
@@ -10,6 +11,7 @@ const educationProducts = [
     name: "讯飞AI学习机 T90 Pro",
     model: "T90 Pro",
     series: "T90系列",
+    category: "学习机",
     subtitle: "旗舰顶配，AI精准学",
     description: "14.7英寸类自然光护眼屏，星火大模型加持，全科AI精准学，适合小学到高中全学段。",
     features: [
@@ -34,6 +36,7 @@ const educationProducts = [
     name: "讯飞AI学习机 T90 Lite",
     model: "T90 Lite",
     series: "T90系列",
+    category: "学习机",
     subtitle: "高端旗舰，精准提升",
     description: "14.7英寸护眼大屏，AI同步精准学，中高考同源评测技术，让学习更高效。",
     features: [
@@ -59,6 +62,7 @@ const educationProducts = [
     name: "讯飞AI学习机 S90 Pro",
     model: "S90 Pro",
     series: "S90系列",
+    category: "学习机",
     subtitle: "性能旗舰，全面升级",
     description: "13.3英寸护眼屏，AI精准学，适合小学到初中，性能全面升级。",
     features: [
@@ -84,6 +88,7 @@ const educationProducts = [
     name: "讯飞AI学习机 T30 Ultra",
     model: "T30 Ultra",
     series: "T30系列",
+    category: "学习机",
     subtitle: "经典旗舰，AI精准学",
     description: "13.3英寸护眼大屏，星火大模型加持，全科AI精准学，经典旗舰之选。",
     features: [
@@ -108,6 +113,7 @@ const educationProducts = [
     name: "讯飞AI学习机 T30 Pro",
     model: "T30 Pro",
     series: "T30系列",
+    category: "学习机",
     subtitle: "高端之选，精准提升",
     description: "13.3英寸护眼大屏，AI同步精准学，中高考同源评测技术。",
     features: [
@@ -132,6 +138,7 @@ const educationProducts = [
     name: "讯飞AI学习机 T30 Lite",
     model: "T30 Lite",
     series: "T30系列",
+    category: "学习机",
     subtitle: "性价比之选",
     description: "13.3英寸护眼屏，AI精准学，适合小学到初中，高性价比。",
     features: [
@@ -157,6 +164,7 @@ const educationProducts = [
     name: "讯飞AI词典笔 P30 Pro",
     model: "P30 Pro",
     series: "P30系列",
+    category: "词典笔",
     subtitle: "大屏旗舰，专业翻译",
     description: "4.0英寸大屏，支持多行扫描，离线翻译，适合大学生及专业人士。",
     features: [
@@ -182,6 +190,7 @@ const educationProducts = [
     name: "讯飞AI词典笔 X9 Pro",
     model: "X9 Pro",
     series: "X9系列",
+    category: "词典笔",
     subtitle: "专业版，全面升级",
     description: "3.7英寸屏幕，0.5秒快速识别，500万+词库，专业版全面升级。",
     features: [
@@ -207,6 +216,7 @@ const educationProducts = [
     name: "讯飞AI词典笔 X8 Pro",
     model: "X8 Pro",
     series: "X8系列",
+    category: "词典笔",
     subtitle: "一扫即查，高效学习",
     description: "3.5英寸屏幕，0.5秒快速识别，400万+词库，覆盖全学段英语学习需求。",
     features: [
@@ -231,6 +241,7 @@ const educationProducts = [
     name: "讯飞AI词典笔 X8",
     model: "X8",
     series: "X8系列",
+    category: "词典笔",
     subtitle: "入门首选，轻松学习",
     description: "3.2英寸屏幕，0.5秒快速识别，320万+词库，入门首选。",
     features: [
@@ -255,7 +266,17 @@ const educationProducts = [
 // 按型号从高到低排序
 const sortedProducts = [...educationProducts].sort((a, b) => b.sortOrder - a.sortOrder);
 
+// 过滤产品
+const filterProducts = (category: string) => {
+  if (category === "全部") return sortedProducts;
+  return sortedProducts.filter(p => p.category === category);
+};
+
 export default function EducationPage() {
+  const [activeCategory, setActiveCategory] = useState("全部");
+  const categories = ["全部", "学习机", "词典笔"];
+  const filteredProducts = filterProducts(activeCategory);
+
   return (
     <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
       <Sidebar />
@@ -272,9 +293,26 @@ export default function EducationPage() {
             </p>
           </div>
 
+          {/* 分类标签 */}
+          <div className="flex gap-2 mb-6">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === category
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
           {/* 产品网格 - 窗口形式 */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {sortedProducts.map((product) => (
+            {filteredProducts.map((product) => (
               <div
                 key={product.id}
                 className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col"
