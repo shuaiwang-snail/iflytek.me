@@ -90,3 +90,24 @@ model Notification {
 
   @@map("notifications")
 }
+
+model Product {
+  id            String    @id @default(cuid())
+  name          String
+  model         String    @unique
+  subtitle      String
+  description   String
+  category      String    // education/medical/finance/etc
+  features      String    // JSON array
+  specs         String    // JSON object
+  price         String
+  tag           String
+  sortOrder     Int       @default(0)
+  isActive      Boolean   @default(true)
+  imageUrl      String?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("products")
+}
