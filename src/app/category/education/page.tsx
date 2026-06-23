@@ -27,7 +27,7 @@ const educationProducts = [
       battery: "12000mAh",
       system: "AI学习系统 5.0"
     },
-    price: "¥12,999",
+    price: "¥10,999",
     tag: "旗舰顶配",
     sortOrder: 10
   },
@@ -52,7 +52,7 @@ const educationProducts = [
       battery: "12000mAh",
       system: "AI学习系统 5.0"
     },
-    price: "¥10,999",
+    price: "¥7,999",
     tag: "高端旗舰",
     sortOrder: 9
   },
@@ -78,7 +78,7 @@ const educationProducts = [
       battery: "10000mAh",
       system: "AI学习系统 4.5"
     },
-    price: "¥8,999",
+    price: "¥5,999",
     tag: "性能旗舰",
     sortOrder: 8
   },
@@ -104,7 +104,7 @@ const educationProducts = [
       battery: "10000mAh",
       system: "AI学习系统 4.0"
     },
-    price: "¥8,999",
+    price: "¥11,999",
     tag: "经典旗舰",
     sortOrder: 7
   },
@@ -129,7 +129,7 @@ const educationProducts = [
       battery: "10000mAh",
       system: "AI学习系统 4.0"
     },
-    price: "¥7,999",
+    price: "¥9,999",
     tag: "高端之选",
     sortOrder: 6
   },
@@ -154,7 +154,7 @@ const educationProducts = [
       battery: "8000mAh",
       system: "AI学习系统 4.0"
     },
-    price: "¥6,999",
+    price: "¥7,499",
     tag: "性价比",
     sortOrder: 5
   },
