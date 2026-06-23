@@ -59,6 +59,8 @@ export async function POST(req: NextRequest) {
         isActive: data.isActive ?? true,
         features: JSON.stringify(data.features || []),
         specs: JSON.stringify(data.specs || {}),
+        imageUrl: data.imageUrl || null,
+        detailImages: JSON.stringify(data.detailImages || []),
       },
     });
 

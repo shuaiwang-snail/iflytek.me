@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -8,6 +8,11 @@ export default function CreateProductPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [features, setFeatures] = useState<string[]>([""]);
+  const [mainImage, setMainImage] = useState<string>("");
+  const [detailImages, setDetailImages] = useState<string[]>([]);
+  const mainImageInputRef = useRef<HTMLInputElement>(null);
+  const detailImageInputRef = useRef<HTMLInputElement>(null);
+  
   const [formData, setFormData] = useState({
     name: "",
     model: "",
@@ -23,6 +28,54 @@ export default function CreateProductPage() {
     battery: "",
     system: "",
   });
+
+  const handleImageUpload = async (file: File, isMain: boolean) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (isMain) {
+          setMainImage(data.url);
+        } else {
+          setDetailImages([...detailImages, data.url]);
+        }
+      }
+    } catch (error) {
+      console.error("上传失败:", error);
+      alert("图片上传失败");
+    }
+  };
+
+  const handleMainImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      handleImageUpload(file, true);
+    }
+  };
+
+  const handleDetailImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      Array.from(files).forEach(file => {
+        handleImageUpload(file, false);
+      });
+    }
+  };
+
+  const removeMainImage = () => {
+    setMainImage("");
+  };
+
+  const removeDetailImage = (index: number) => {
+    setDetailImages(detailImages.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,6 +96,8 @@ export default function CreateProductPage() {
           sortOrder: parseInt(formData.sortOrder),
           features: features.filter(f => f.trim()),
           specs,
+          imageUrl: mainImage,
+          detailImages,
         }),
       });
 
@@ -96,6 +151,93 @@ export default function CreateProductPage() {
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
           <div className="space-y-6">
+            {/* 图片上传区域 */}
+            <div>
+              <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">产品图片</h2>
+              
+              {/* 主图上传 */}
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  产品主图 *
+                </label>
+                <div className="flex items-center gap-4">
+                  {mainImage ? (
+                    <div className="relative">
+                      <img
+                        src={mainImage}
+                        alt="主图预览"
+                        className="w-32 h-32 object-cover rounded-lg border border-gray-200 dark:border-gray-600"
+                      />
+                      <button
+                        type="button"
+                        onClick={removeMainImage}
+                        className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs hover:bg-red-600"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ) : (
+                    <div
+                      onClick={() => mainImageInputRef.current?.click()}
+                      className="w-32 h-32 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+                    >
+                      <span className="text-3xl text-gray-400 mb-1">+</span>
+                      <span className="text-xs text-gray-500">上传主图</span>
+                    </div>
+                  )}
+                  <input
+                    ref={mainImageInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleMainImageChange}
+                    className="hidden"
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">建议尺寸：800x800px，用于产品列表展示</p>
+              </div>
+
+              {/* 产品详图上传 */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  产品详图
+                </label>
+                <div className="flex flex-wrap gap-4">
+                  {detailImages.map((img, index) => (
+                    <div key={index} className="relative">
+                      <img
+                        src={img}
+                        alt={`详图 ${index + 1}`}
+                        className="w-24 h-24 object-cover rounded-lg border border-gray-200 dark:border-gray-600"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removeDetailImage(index)}
+                        className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full text-xs hover:bg-red-600"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                  <div
+                    onClick={() => detailImageInputRef.current?.click()}
+                    className="w-24 h-24 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+                  >
+                    <span className="text-2xl text-gray-400 mb-1">+</span>
+                    <span className="text-xs text-gray-500">添加详图</span>
+                  </div>
+                  <input
+                    ref={detailImageInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleDetailImageChange}
+                    className="hidden"
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">可上传多张产品细节图、场景图等</p>
+              </div>
+            </div>
+
             {/* 基本信息 */}
             <div>
               <h2 className="text-lg font-medium text-gray-900 dark:text-white mb-4">基本信息</h2>

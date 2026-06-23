@@ -104,7 +104,8 @@ model Product {
   tag           String
   sortOrder     Int       @default(0)
   isActive      Boolean   @default(true)
-  imageUrl      String?
+  imageUrl      String?   // 主图
+  detailImages  String    @default("[]") // JSON array of detail images
   
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
