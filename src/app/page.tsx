@@ -122,15 +122,14 @@ export default function Home() {
             </p>
           </div>
 
-          {/* 分类筛选 + 搜索 - AIHOT 风格 */}
+          {/* 分类筛选标签 - 参考AIHOT风格 */}
           <div className="mb-6">
-            <div className="flex items-center gap-1 text-sm mb-3">
-              <span className="text-gray-500 dark:text-gray-400 mr-2">分类筛选</span>
+            <div className="flex items-center gap-2 mb-4">
               <button
                 onClick={() => setActiveCategory("all")}
-                className={`px-2 py-1 transition-colors ${
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                   activeCategory === "all"
-                    ? "text-blue-600 dark:text-blue-400 font-medium"
+                    ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
@@ -140,9 +139,9 @@ export default function Home() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`px-2 py-1 transition-colors ${
+                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
                     activeCategory === cat.id
-                      ? "text-blue-600 dark:text-blue-400 font-medium"
+                      ? "bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white"
                       : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                   }`}
                 >
